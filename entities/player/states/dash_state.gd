@@ -15,6 +15,7 @@ func enter() -> void:
 	entity.has_dash = false
 	entity.dash_timer = entity.dash_duration
 	
+	entity.player_sprite.play("dash")
 	entity.update_facing(direction)
 	entity.squash_and_stretch(Vector2(1.3, 0.75), 0.15)
 	entity.jump_dust.restart()

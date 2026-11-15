@@ -15,6 +15,10 @@
 [ext_resource type="Script" uid="uid://h42ode73ytnu" path="res://entities/player/states/wall_jump_state.gd" id="13_j3ovn"]
 [ext_resource type="Script" uid="uid://crw213p1d2tbd" path="res://entities/player/states/dash_state.gd" id="14_afbqv"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyb6c"]
+atlas = ExtResource("3_sglur")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkugw"]
 atlas = ExtResource("2_abrql")
 region = Rect2(0, 0, 64, 64)
@@ -81,6 +85,14 @@ region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyb6c")
+}],
+"loop": 0,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fkugw")
@@ -207,7 +219,7 @@ jump_time_to_descent = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=285813524]
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"idle"
+animation = &"dash"
 autoplay = "idle"
 offset = Vector2(0, -25)
 
