@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dqxoxmpiy113w"]
+
+[ext_resource type="Texture2D" uid="uid://crcei2iuua1tj" path="res://assets/Tile/platform.png" id="1_p5mbk"]
+[ext_resource type="Script" uid="uid://m36ojuptysqg" path="res://entities/moving_platform/moving_platform.gd" id="1_wwx62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(46, 10)
+
+[node name="MovingPlatform" type="Path2D" unique_id=971765332]
+script = ExtResource("1_wwx62")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1570920695]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=2025144555]
+remote_path = NodePath("../../AnimatableBody2D")
+update_rotation = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=683440618]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=48387425]
+texture = ExtResource("1_p5mbk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1106795672]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_xrivr")
+one_way_collision = true
