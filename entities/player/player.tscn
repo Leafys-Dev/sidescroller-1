@@ -212,6 +212,7 @@ scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_wi6ju")
 
 [node name="Player" type="CharacterBody2D" unique_id=622059697]
+collision_layer = 2
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_snap_length = 6.0

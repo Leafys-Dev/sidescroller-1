@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ci6xqxnedw0lo"]
+
+[ext_resource type="Script" uid="uid://bes52wpqh8x14" path="res://entities/hazard/hazard.gd" id="1_enijh"]
+
+[node name="Hazard" type="Area2D" unique_id=198534066 groups=["hazards"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_enijh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
