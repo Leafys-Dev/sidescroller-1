@@ -231,10 +231,6 @@ offset = Vector2(0, -25)
 position = Vector2(0, -22)
 shape = SubResource("CapsuleShape2D_13qdw")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=743888466]
-offset = Vector2(0, -60)
-zoom = Vector2(2, 2)
-
 [node name="JumpDust" type="GPUParticles2D" parent="." unique_id=2092036588]
 emitting = false
 amount = 10

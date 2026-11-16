@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dqxoxmpiy113w" path="res://entities/moving_platform/moving_platform.tscn" id="4_qo0ko"]
 [ext_resource type="PackedScene" uid="uid://ci6xqxnedw0lo" path="res://entities/hazard/hazard.tscn" id="6_xctyr"]
 [ext_resource type="PackedScene" uid="uid://bu6umbwgg4v3c" path="res://entities/checkpoint/checkpoint.tscn" id="8_v1acv"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_v7owi"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_81dj1"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_mmwcm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xctyr"]
 texture = ExtResource("3_8th66")
@@ -144,6 +147,11 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(80, 13)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xrivr"]
+
+[sub_resource type="Resource" id="Resource_umisj"]
+script = ExtResource("11_mmwcm")
+
 [node name="TestLevel" type="Node2D" unique_id=1998887583]
 script = ExtResource("1_18dot")
 
@@ -176,6 +184,12 @@ position = Vector2(122, 568)
 position = Vector2(30, 3.5)
 shape = SubResource("RectangleShape2D_xrivr")
 
+[node name="End Of World" parent="Hazards" unique_id=288373755 instance=ExtResource("6_xctyr")]
+position = Vector2(-169, 680)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/End Of World" unique_id=216339158]
+shape = SubResource("WorldBoundaryShape2D_xrivr")
+
 [node name="Checkpoints" type="Node" parent="." unique_id=1283870452]
 
 [node name="Checkpoint" parent="Checkpoints" unique_id=929882731 instance=ExtResource("8_v1acv")]
@@ -183,3 +197,38 @@ position = Vector2(46, 192)
 
 [node name="Checkpoint2" parent="Checkpoints" unique_id=1203829982 instance=ExtResource("8_v1acv")]
 position = Vector2(729, 448)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1289149060]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(298, 445)
+zoom = Vector2(2, 2)
+limit_left = -112
+limit_top = -308
+limit_right = 1920
+limit_bottom = 656
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1577828721]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("9_v7owi")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1436844555 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(298, 445)
+script = ExtResource("10_81dj1")
+priority = 1
+follow_mode = 2
+follow_target = NodePath("../Player")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_umisj")
+follow_offset = Vector2(0, -60)
+follow_damping = true
+lookahead = true
+lookahead_time = Vector2(0.2, 0.2)
+lookahead_acceleration = 0.5
+lookahead_deceleration = 0.5
+limit_target = NodePath("../Ground")
+limit_margin = Vector4i(0, -500, 0, 0)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"

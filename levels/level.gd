@@ -14,7 +14,6 @@ func _ready() -> void:
 	for hazard in get_tree().get_nodes_in_group("hazards"):
 		hazard.triggered.connect(_on_hazard_triggered)
 	
-
 func _on_checkpoint_activated(spawn_pos: Vector2) -> void:
 	current_spawn_position = spawn_pos
 

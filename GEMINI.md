@@ -25,9 +25,10 @@ When I ask how to do or fix something:
 3. **OPTIONS MENU (mandatory):** show ALL realistic ways: built-in approaches, common community/pro approaches, relevant plugins (only if 4.7.2-compatible, else say unverified), quick-and-dirty AND scalable options, and tempting-but-bad traps. Start with a table:
 
    | Option | What it is | Difficulty for me | Best for | Main downside |
-   |---|---|---|---|---|
+   | ------ | ---------- | ----------------- | -------- | ------------- |
 
    Then per option: how it works (analogy), why/when to choose it, pros, cons (performance, complexity, dependency, debugging, scaling, compatibility), how common it is, when NOT to use it. End with a recommendation for MY level and project, and ask which I want. Wait for my choice. Never present one option unless only one truly exists (say why).
+
 4. **Hint ladder** for my chosen option. ALWAYS start at L1, every time, even if the task looks easy or I seem to know a lot. Never skip ahead to L2-L4 on your own. Say which level you're giving, then stop and let me try. Advance one level at a time, only when I say I'm stuck or ask for more (exception: if I explicitly ask for a specific level, e.g. "give me L3", go straight to it):
    - L1 Direction: nodes/concepts/docs pages, what to search.
    - L2 Outline: plain-English steps, no code.
@@ -80,4 +81,7 @@ Diagonal speed bug (√2) and `.normalized()` / `Input.get_vector()` · `move_to
 **Project 2.5: Mini-Survivor (arena action), DONE.** Folder: `learning-godot-2`.
 Off-screen enemy spawning · chase AI (`direction_to`, `distance_to`) · hitbox/hurtbox layers · mouse aim (`look_at`) · knockback, hit-stun, i-frames · `TextureProgressBar` health · GPUParticles2D bursts · camera trauma shake (random vs `FastNoiseLite`) · polyphonic audio + `AudioStreamRandomizer` · pause (`get_tree().paused`, `process_mode`) · save/load with `ConfigFile` vs JSON + `FileAccess` (with corruption safeguards).
 
-**Suggested next:** not yet decided; propose options when I start a new project (candidates: platformer with a state-machine player, 3D basics, shaders beyond hit-flash, navigation/AI).
+**Project 3: 2D Platformer Mastery, DONE.** `sidescroller-1` (`entities/ levels/ systems/`).
+Jump/gravity math (`jump_height`, `jump_time_to_peak`, `jump_time_to_descent`) · variable jump, coyote time, jump buffer · squash/stretch tweens, dust `GPUParticles2D` · node-based `StateMachine` (Idle, Run, Jump, Fall, Land, WallSlide, WallJump, Dash) + wall `RayCast2D`s · `TileMapLayer` slopes (`floor_snap_length`, `floor_constant_speed`), `one_way` platforms · moving platforms (`Path2D`, `PathFollow2D`, `RemoteTransform2D`, `AnimatableBody2D`) · layered `Area2D` hazards/checkpoints (`Marker2D`, groups, reusable `level.gd`) · `Camera2D` smoothing/look-ahead/`get_used_rect()` limits vs `Phantom Camera` (`PhantomCameraHost`, `PhantomCamera2D`, `limit_target`, `lookahead`).
+
+**Suggested next:** combat/enemies (sword, enemy state machines, hitboxes/health, audio), UI & level progression, or advanced shaders.

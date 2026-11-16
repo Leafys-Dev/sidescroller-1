@@ -7,7 +7,7 @@ signal activated(spawn_position: Vector2)
 
 var is_activated: bool = false
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if is_activated:
 		return
 	
